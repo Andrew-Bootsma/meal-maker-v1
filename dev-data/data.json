@@ -1,0 +1,11 @@
+[
+  { "id": 0, "name": "Dal Makhani", "highProtein": true },
+  { "id": 1, "name": "Baked Salmon", "highProtein": true },
+  { "id": 2, "name": "Liver and Onions", "highProtein": true },
+  { "id": 3, "name": "Low-carb Rice with Honey", "highProtein": false },
+  { "id": 4, "name": "Butternut Squash", "highProtein": false },
+  { "id": 5, "name": "Sweet Potato Puree", "highProtein": false },
+  { "id": 6, "name": "Caesar Salad", "highProtein": false },
+  { "id": 7, "name": "Curried Cauliflower Steak", "highProtein": false },
+  { "id": 8, "name": "Buttered Kale", "highProtein": false }
+]
