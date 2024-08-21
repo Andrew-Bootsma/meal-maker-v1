@@ -6,6 +6,5 @@
   { "id": 4, "name": "Butternut Squash", "highProtein": false },
   { "id": 5, "name": "Sweet Potato Puree", "highProtein": false },
   { "id": 6, "name": "Caesar Salad", "highProtein": false },
-  { "id": 7, "name": "Curried Cauliflower Steak", "highProtein": false },
-  { "id": 8, "name": "Buttered Kale", "highProtein": false }
+  { "id": 7, "name": "Curried Cauliflower Steak", "highProtein": false }
 ]
