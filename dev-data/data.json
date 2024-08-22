@@ -1,10 +1,10 @@
 [
-  { "id": 0, "name": "Dal Makhani", "highProtein": true },
-  { "id": 1, "name": "Baked Salmon", "highProtein": true },
-  { "id": 2, "name": "Liver and Onions", "highProtein": true },
-  { "id": 3, "name": "Low-carb Rice with Honey", "highProtein": false },
-  { "id": 4, "name": "Butternut Squash", "highProtein": false },
-  { "id": 5, "name": "Sweet Potato Puree", "highProtein": false },
-  { "id": 6, "name": "Caesar Salad", "highProtein": false },
-  { "id": 7, "name": "Curried Cauliflower Steak", "highProtein": false }
+  { "id": 0, "recipeName": "Dal Makhani", "highProtein": true },
+  { "id": 1, "recipeName": "Baked Salmon", "highProtein": true },
+  { "id": 2, "recipeName": "Liver and Onions", "highProtein": true },
+  { "id": 3, "recipeName": "Low-carb Rice with Honey", "highProtein": false },
+  { "id": 4, "recipeName": "Butternut Squash", "highProtein": false },
+  { "id": 5, "recipeName": "Sweet Potato Puree", "highProtein": false },
+  { "id": 6, "recipeName": "Caesar Salad", "highProtein": false },
+  { "id": 7, "recipeName": "Curried Cauliflower Steak", "highProtein": false }
 ]
