@@ -11,15 +11,19 @@ const tempCard = fs.readFileSync(
   `${__dirname}/templates/template-card.html`,
   'utf-8'
 );
+const tempRecipe = fs.readFileSync(
+  `${__dirname}/templates/template-recipe.html`,
+  'utf-8'
+);
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
-  const { pathname } = url.parse(req.url, true);
+  const { pathname, query } = url.parse(req.url, true);
 
   // Home page
-  if (pathname === '/' || false) {
+  if (pathname === '/' || pathname === '/home') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
     const cardsHtml = dataObj
@@ -27,6 +31,13 @@ const server = http.createServer((req, res) => {
       .join('');
     const output = tempHome.replace('{%RECIPE_CARDS%}', cardsHtml);
 
+    res.end(output);
+
+    // Recipe page
+  } else if (pathname === '/recipe') {
+    res.writeHead(200, { 'Content-type': 'text/html' });
+    const recipe = dataObj[query.id];
+    const output = replaceTemplate(tempRecipe, recipe);
     res.end(output);
 
     // Not found
