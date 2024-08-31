@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>MEAL MAKER</title>
 
@@ -13,20 +19,26 @@
       *::after {
         margin: 0;
         padding: 0;
-        box-sizing: inherit;
       }
 
       html {
         font-size: 62.5%;
-        box-sizing: border-box;
       }
 
       body {
         padding: 5rem 5rem 10rem;
-        line-height: 1.7;
+        font-family: Helvetica, sans-serif;
         color: #1a1a1a;
         min-height: 100vh;
         background: #fafafa;
+      }
+
+      h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 6rem;
+        color: #1a1a1a;
+        text-align: center;
+        position: relative;
       }
 
       .container {
@@ -38,7 +50,38 @@
         margin-top: 8rem;
       }
 
-      .not-high-protein {
+      .card {
+        border: 1px solid #1a1a1a;
+        margin-bottom: 5rem;
+        display: flex;
+        text-decoration: none;
+      }
+
+      .recipeTitle {
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        padding: 0 3rem;
+
+        font-family: 'Montserrat', sans-serif;
+        color: #1a1a1a;
+        font-size: 3.25rem;
+        text-decoration: none;
+      }
+
+      .highProtein {
+        display: flex;
+        align-items: center;
+
+        font-weight: 900;
+        font-size: 1.9rem;
+        -webkit-background-clip: text;
+        background-clip: text;
+        padding: 1.75rem;
+        color: #186318;
+      }
+
+      .notHighProtein {
         display: none;
       }
     </style>
@@ -52,3 +95,6 @@
     </div>
   </body>
 </html>
+
+<!-- color: #1a1a1a; -->
+<!-- background: #fafafa; -->

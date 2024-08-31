@@ -1,10 +1,107 @@
 [
-  { "id": 0, "recipeName": "Dal Makhani", "highProtein": true },
-  { "id": 1, "recipeName": "Baked Salmon", "highProtein": true },
-  { "id": 2, "recipeName": "Liver and Onions", "highProtein": true },
-  { "id": 3, "recipeName": "Low-carb Rice with Honey", "highProtein": false },
-  { "id": 4, "recipeName": "Butternut Squash", "highProtein": false },
-  { "id": 5, "recipeName": "Sweet Potato Puree", "highProtein": false },
-  { "id": 6, "recipeName": "Caesar Salad", "highProtein": false },
-  { "id": 7, "recipeName": "Curried Cauliflower Steak", "highProtein": false }
+  {
+    "id": 0,
+    "recipeName": "Baked Salmon",
+    "highProtein": true,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+
+  {
+    "id": 1,
+    "recipeName": "Low-carb Rice with Honey",
+    "highProtein": false,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 2,
+    "recipeName": "Butternut Squash",
+    "highProtein": false,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 3,
+    "recipeName": "Dal Makhani",
+    "highProtein": true,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 4,
+    "recipeName": "Sweet Potato Puree",
+    "highProtein": false,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 5,
+    "recipeName": "Caesar Salad",
+    "highProtein": false,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 6,
+    "recipeName": "Liver and Onions",
+    "highProtein": true,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  },
+  {
+    "id": 7,
+    "recipeName": "Curried Cauliflower Steak",
+    "highProtein": false,
+    "ingredients": ["butter", "salt"],
+    "description": "Hello World",
+    "image": "../images/liver-and-onions.jpg",
+    "directions": {
+      "1": "Step 1",
+      "2": "Step 2",
+      "3": "Step 3"
+    }
+  }
 ]

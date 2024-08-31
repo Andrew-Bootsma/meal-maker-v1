@@ -1,13 +1,7 @@
 <figure>
-  <div>
-    <a href="/recipe?id={%ID%}">
-      <h2>{%RECIPENAME%}</h2>
-    </a>
-  </div>
-
-  <div>
-    <div class="{%NOT_HIGHPROTEIN%}">
-      <h6>High Protein!</h6>
-    </div>
-  </div>
+  <a class="card" href="/recipe?id={%ID%}">
+    <img src="{%IMAGE%}" width="75" />
+    <h2 class="recipeTitle">{%RECIPENAME%}</h2>
+    <h6 class="highProtein {%NOT_HIGHPROTEIN%}">High protein</h6>
+  </a>
 </figure>

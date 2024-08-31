@@ -1,6 +1,7 @@
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
+const path = require('path');
 const replaceTemplate = require('./modules/replaceTemplate');
 
 const tempHome = fs.readFileSync(
@@ -22,8 +23,21 @@ const dataObj = JSON.parse(data);
 const server = http.createServer((req, res) => {
   const { pathname, query } = url.parse(req.url, true);
 
-  // Home page
-  if (pathname === '/' || pathname === '/home') {
+  // Serve images
+  if (pathname.startsWith('/images/')) {
+    const filePath = path.join(__dirname, pathname);
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>Image not found!</h1>');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.end(data);
+      }
+    });
+
+    // Home page
+  } else if (pathname === '/' || pathname === '/home') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
     const cardsHtml = dataObj
