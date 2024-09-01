@@ -4,7 +4,7 @@
   "description": "My first Node.js project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js --ext js,html",
+    "start": "nodemon index.js --ext js,html,json",
     "test": "jest"
   },
   "author": "Andrew Bootsma",

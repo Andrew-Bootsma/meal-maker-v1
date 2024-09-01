@@ -3,105 +3,97 @@
     "id": 0,
     "recipeName": "Baked Salmon",
     "highProtein": true,
+    "protein": "25g",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/baked-salmon.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "fillets"
   },
 
   {
     "id": 1,
     "recipeName": "Low-carb Rice with Honey",
     "highProtein": false,
+    "protein": "N/A",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/rice.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "cups"
   },
   {
     "id": 2,
     "recipeName": "Butternut Squash",
     "highProtein": false,
+    "protein": "N/A",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/butternut-squash.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "cups"
   },
   {
     "id": 3,
     "recipeName": "Dal Makhani",
     "highProtein": true,
+    "protein": "25g",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/dal-makhani.webp",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "cups"
   },
   {
     "id": 4,
     "recipeName": "Sweet Potato Puree",
     "highProtein": false,
+    "protein": "N/A",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/sweet-potato-puree.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "cups"
   },
   {
     "id": 5,
     "recipeName": "Caesar Salad",
     "highProtein": false,
+    "protein": "N/A",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/caesar-salad.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "cups"
   },
   {
     "id": 6,
     "recipeName": "Liver and Onions",
     "highProtein": true,
+    "protein": "25g",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
     "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "grams of liver"
   },
   {
     "id": 7,
     "recipeName": "Curried Cauliflower Steak",
     "highProtein": false,
+    "protein": "N/A",
     "ingredients": ["butter", "salt"],
     "description": "Hello World",
-    "image": "../images/liver-and-onions.jpg",
-    "directions": {
-      "1": "Step 1",
-      "2": "Step 2",
-      "3": "Step 3"
-    }
+    "image": "../images/cauliflower-steak.jpg",
+    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
+    "servingSize": 3,
+    "servingType": "steaks"
   }
 ]

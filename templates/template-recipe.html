@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>{%RECIPENAME%} /// MEAL MAKER</title>
 
@@ -13,23 +19,22 @@
       *::after {
         margin: 0;
         padding: 0;
-        box-sizing: inherit;
       }
 
       html {
         font-size: 62.5%;
-        box-sizing: border-box;
       }
 
       body {
         padding: 5rem 5rem 10rem;
-        line-height: 1.7;
+        font-family: Helvetica, sans-serif;
         color: #1a1a1a;
         min-height: 100vh;
         background: #fafafa;
       }
 
       h1 {
+        font-family: 'Montserrat', sans-serif;
         font-size: 6rem;
         text-align: center;
         position: relative;
@@ -41,15 +46,26 @@
       }
 
       .recipe {
-        width: 100rem;
+        width: 60rem;
         margin: 0 auto;
         margin-top: 9rem;
-        background: white;
-        box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
+        border: 1px solid #1a1a1a;
         position: relative;
       }
 
-      .recipe__high-protein {
+      .recipeHero {
+        position: relative;
+        height: 22rem;
+        overflow: hidden;
+      }
+
+      .recipeImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .highProtein {
         position: absolute;
         top: -4rem;
         right: -4rem;
@@ -57,42 +73,81 @@
         height: 11rem;
         width: 11rem;
         border-radius: 50%;
-        transform: rotate(15deg);
-        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+        border: 1px solid #1a1a1a;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: #fafafa;
       }
 
-      .recipe__high-protien h5 {
+      .highProtein h5 {
         font-weight: 900;
-        text-transform: uppercase;
         font-size: 1.8rem;
-        color: white;
+        text-align: center;
+        color: #186318;
+        width: 75%;
       }
 
-      .recipe__back:link,
-      .recipe__back:visited {
+      .recipeBack:link,
+      .recipeBack:visited {
         position: absolute;
         top: 2rem;
         left: 2rem;
         font-size: 1.5rem;
         font-weight: 700;
-        text-transform: uppercase;
         text-decoration: none;
         z-index: 1000;
-        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+        background-color: #fafafa;
+        color: #1a1a1a;
+        border: 1px solid #1a1a1a;
         border-radius: 100rem;
         padding: 0 2rem;
-        transition: all 0.3s;
         display: flex;
         align-items: center;
       }
 
-      .recipe__name {
+      .recipeName {
+        padding: 1rem;
+        font-family: 'Montserrat', sans-serif;
         font-size: 4rem;
         text-align: center;
+        word-spacing: 2px;
+      }
+
+      .recipeDetails {
+        padding: 4rem 6rem;
+        font-size: 1.9rem;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .recipeDescription {
+        padding: 5rem 6rem;
+        font-size: 1.6rem;
+      }
+
+      .recipeDirections {
+        padding: 5rem 6rem;
+        font-size: 1.6rem;
+        white-space: pre-line;
+      }
+
+      .recipeLink:link,
+      .recipeLink:visited {
+        display: block;
+        color: #186318;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        border-top: 1px solid #1a1a1a;
+        border-bottom: 1px solid #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        background-color: #fafafa;
       }
 
       .notHighProtein {
@@ -103,14 +158,28 @@
 
   <body>
     <div class="container">
-      <h1>🥗 Meal Maker 🥩</h1>
+      <h1>Meal Maker</h1>
 
       <figure class="recipe">
-        <div class="recipe__high-protein {%NOT_HIGH_PROTEIN%}">
+        <div class="highProtein {%NOT_HIGHPROTEIN%}">
           <h5>High Protein</h5>
         </div>
-        <a href="/home" class="recipe__back">Back </a>
-        <h2 class="recipe__name">{%RECIPENAME%}</h2>
+        <a href="/home" class="recipeBack"> Back </a>
+        <div class="recipeHero">
+          <img src="{%IMAGE%}" alt="{%RECIPENAME%}"" class="recipeImage" />
+        </div>
+        <h2 class="recipeName">{%RECIPENAME%}</h2>
+        <div class="recipeDetails">
+          <p>Serving size: {%SERVINGSIZE%} {%SERVINGTYPE%}</p>
+          <p class="{%NOT_HIGHPROTEIN%}">Protein: {%PROTEIN%}</p>
+        </div>
+
+        <a href="#" class="recipeLink">
+          <span>Add to meal</span>
+        </a>
+
+        <p class="recipeDescription">{%DESCRIPTION%}</p>
+        <p class="recipeDirections">{%DIRECTIONS%}</p>
       </figure>
     </div>
   </body>
