@@ -8,6 +8,7 @@ module.exports = (temp, recipe) => {
   output = output.replace(/{%SERVINGSIZE%}/g, recipe.servingSize);
   output = output.replace(/{%SERVINGTYPE%}/g, recipe.servingType);
   output = output.replace(/{%PROTEIN%}/g, recipe.protein);
+  output = output.replace(/{%CALORIES%}/g, recipe.calories);
 
   if (!recipe.highProtein)
     output = output.replace(/{%NOT_HIGHPROTEIN%}/g, 'notHighProtein');

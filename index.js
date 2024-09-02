@@ -50,9 +50,33 @@ const server = http.createServer((req, res) => {
     // Recipe page
   } else if (pathname === '/recipe') {
     res.writeHead(200, { 'Content-type': 'text/html' });
+
     const recipe = dataObj[query.id];
-    const output = replaceTemplate(tempRecipe, recipe);
+    const userServings = query.userServings || recipe.servingSize;
+
+    const adjustedRecipe = {
+      ...recipe,
+      servingSize: userServings,
+      // ingredients: recipe.ingredients.map(ingredient => adjustIngredient(ingredient, recipe.servingSize, userServings)),
+      calories: recipe.calories * userServings,
+      protein: recipe.protein !== 'N/A' ? recipe.protein * userServings : 'N/A',
+    };
+
+    const output = replaceTemplate(tempRecipe, adjustedRecipe);
     res.end(output);
+
+    // Serve static files
+  } else if (pathname.startsWith('/static/')) {
+    const filePath = path.join(__dirname, pathname);
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>File not found!</h1>');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'application/javascript' });
+        res.end(data);
+      }
+    });
 
     // Not found
   } else {

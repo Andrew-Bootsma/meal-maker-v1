@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="../static/recipe-script.js"></script>
 
     <title>{%RECIPENAME%} /// MEAL MAKER</title>
 
@@ -153,6 +154,24 @@
       .notHighProtein {
         display: none;
       }
+
+      .servingInput {
+        font-size: 1.9rem;
+        width: 3rem;
+        text-align: center;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
     </style>
   </head>
 
@@ -170,8 +189,23 @@
         </div>
         <h2 class="recipeName">{%RECIPENAME%}</h2>
         <div class="recipeDetails">
-          <p>Serving size: {%SERVINGSIZE%} {%SERVINGTYPE%}</p>
-          <p class="{%NOT_HIGHPROTEIN%}">Protein: {%PROTEIN%}</p>
+          <form action="/recipe" method="GET" id="servingForm">
+            <label for="userServings">Serving size:</label>
+            <input
+              type="number"
+              id="userServings"
+              name="userServings"
+              min="1"
+              value="{%SERVINGSIZE%}"
+              required
+              class="servingInput"
+            />
+            <input type="hidden" name="id" value="{%ID%}" />
+            {%SERVINGTYPE%}
+          </form>
+
+          <p>Calories: {%CALORIES%}</p>
+          <p class="{%NOT_HIGHPROTEIN%}">Protein: {%PROTEIN%}g</p>
         </div>
 
         <a href="#" class="recipeLink">
