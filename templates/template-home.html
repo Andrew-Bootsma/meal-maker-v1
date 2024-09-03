@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="../static/home-script.js"></script>
 
     <title>MEAL MAKER</title>
 
@@ -47,7 +48,7 @@
       }
 
       .cards-container {
-        margin-top: 8rem;
+        margin-top: 4rem;
       }
 
       .card {
@@ -84,6 +85,17 @@
       .notHighProtein {
         display: none;
       }
+
+      .searchBar {
+        font-size: 2rem;
+        padding: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .searchBarContainer {
+        margin-top: 2rem;
+      }
     </style>
   </head>
 
@@ -91,10 +103,17 @@
     <div class="container">
       <h1>Meal Maker</h1>
 
-      <div class="cards-container">{%RECIPE_CARDS%}</div>
+      <div class="searchBarContainer">
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Search recipes..."
+          oninput="searchRecipes()"
+          class="searchBar"
+        />
+      </div>
+
+      <div class="cards-container" id="cardsContainer">{%RECIPE_CARDS%}</div>
     </div>
   </body>
 </html>
-
-<!-- color: #1a1a1a; -->
-<!-- background: #fafafa; -->

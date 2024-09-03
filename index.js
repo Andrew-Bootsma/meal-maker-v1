@@ -23,24 +23,11 @@ const dataObj = JSON.parse(data);
 const server = http.createServer((req, res) => {
   const { pathname, query } = url.parse(req.url, true);
 
-  // Serve images
-  if (pathname.startsWith('/images/')) {
-    const filePath = path.join(__dirname, pathname);
-    fs.readFile(filePath, (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>Image not found!</h1>');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
-        res.end(data);
-      }
-    });
-
-    // Home page
-  } else if (pathname === '/' || pathname === '/home') {
+  // Home page
+  if (pathname === '/' || pathname === '/home') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
-    const cardsHtml = dataObj
+    const cardsHtml = dataObj.recipes
       .map((el) => replaceTemplate(tempCard, el))
       .join('');
     const output = tempHome.replace('{%RECIPE_CARDS%}', cardsHtml);
@@ -51,7 +38,7 @@ const server = http.createServer((req, res) => {
   } else if (pathname === '/recipe') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
-    const recipe = dataObj[query.id];
+    const recipe = dataObj.recipe[query.id];
     const userServings = query.userServings || recipe.servingSize;
 
     const adjustedRecipe = {
@@ -64,6 +51,43 @@ const server = http.createServer((req, res) => {
 
     const output = replaceTemplate(tempRecipe, adjustedRecipe);
     res.end(output);
+
+    // Add a recipe to meal
+  } else if (pathname === '/add-to-meal') {
+    const recipe = dataObj.recipes.find((el) => el.id == query.id);
+    if (recipe && !dataObj.meal.some((fav) => fav.id == query.id)) {
+      dataObj.meal.push(recipe);
+      fs.writeFileSync(
+        `${__dirname}/dev-data/data.json`,
+        JSON.stringify(dataObj)
+      );
+    }
+    res.writeHead(302, { Location: '/meal' });
+    res.end();
+
+    // View meal page
+  } else if (pathname === '/meal') {
+    res.writeHead(200, { 'Content-type': 'text/html' });
+
+    const mealHtml = dataObj.meal
+      .map((el) => replaceTemplate(tempCard, el))
+      .join('');
+    const output = tempHome.replace('{%RECIPE_CARDS%}', mealHtml);
+
+    res.end(output);
+
+    // Serve images
+  } else if (pathname.startsWith('/images/')) {
+    const filePath = path.join(__dirname, pathname);
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>Image not found!</h1>');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.end(data);
+      }
+    });
 
     // Serve static files
   } else if (pathname.startsWith('/static/')) {
