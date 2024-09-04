@@ -179,10 +179,6 @@
     <div class="container">
       <h1>Meal Maker</h1>
 
-      <a href="/add-to-favorites?id={%ID%}" class="recipeLink">
-        <span>Add to favorites</span>
-      </a>
-
       <figure class="recipe">
         <div class="highProtein {%NOT_HIGHPROTEIN%}">
           <h5>High Protein</h5>
@@ -212,11 +208,10 @@
           <p class="{%NOT_HIGHPROTEIN%}">Protein: {%PROTEIN%}g</p>
         </div>
 
-        <a href="#" class="recipeLink">
+        <a href="/add-to-meal?id={%ID%}" class="recipeLink">
           <span>Add to meal</span>
         </a>
 
-        <p class="recipeDescription">{%DESCRIPTION%}</p>
         <p class="recipeDirections">{%DIRECTIONS%}</p>
       </figure>
     </div>

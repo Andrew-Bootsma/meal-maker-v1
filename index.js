@@ -16,15 +16,60 @@ const tempRecipe = fs.readFileSync(
   `${__dirname}/templates/template-recipe.html`,
   'utf-8'
 );
+const tempMeal = fs.readFileSync(
+  `${__dirname}/templates/template-meal.html`,
+  'utf-8'
+);
 
-const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
-const dataObj = JSON.parse(data);
+const recipeData = fs.readFileSync(
+  `${__dirname}/dev-data/recipe-data.json`,
+  'utf-8'
+);
+const recipeDataObj = JSON.parse(recipeData);
+
+const mealData = fs.readFileSync(
+  `${__dirname}/dev-data/meal-data.json`,
+  'utf-8'
+);
+const mealDataObj = JSON.parse(mealData);
 
 const server = http.createServer((req, res) => {
   const { pathname, query } = url.parse(req.url, true);
 
   // Home page
   if (pathname === '/' || pathname === '/home') {
+    res.writeHead(200, { 'Content-type': 'text/html' });
+
+    const highProteinCardsHtml = recipeDataObj
+      .filter((el) => el.highProtein === true)
+      .map((el) => replaceTemplate(tempCard, el))
+      .join('');
+
+    const lowProteinCardsHtml = recipeDataObj
+      .filter((el) => el.highProtein === false)
+      .map((el) => replaceTemplate(tempCard, el))
+      .join('');
+
+    const mealHtml = mealDataObj.recipes
+      .map((el) => replaceTemplate(tempCard, el))
+      .join('');
+
+    const getOutput = () => {
+      if (mealDataObj.recipes.length === 0) {
+        return tempHome.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
+      }
+
+      if (mealDataObj.recipes.length === 1) {
+        return tempHome.replace('{%RECIPE_CARDS%}', lowProteinCardsHtml);
+      }
+
+      return tempMeal.replace('{%RECIPE_CARDS%}', mealHtml);
+    };
+
+    res.end(getOutput());
+
+    // Recipes page
+  } else if (pathname === '/recipes') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
     const cardsHtml = dataObj.recipes
@@ -38,7 +83,7 @@ const server = http.createServer((req, res) => {
   } else if (pathname === '/recipe') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
-    const recipe = dataObj.recipe[query.id];
+    const recipe = recipeDataObj[query.id];
     const userServings = query.userServings || recipe.servingSize;
 
     const adjustedRecipe = {
@@ -54,27 +99,28 @@ const server = http.createServer((req, res) => {
 
     // Add a recipe to meal
   } else if (pathname === '/add-to-meal') {
-    const recipe = dataObj.recipes.find((el) => el.id == query.id);
-    if (recipe && !dataObj.meal.some((fav) => fav.id == query.id)) {
-      dataObj.meal.push(recipe);
+    const recipe = recipeDataObj.find((el) => el.id == query.id);
+    if (recipe && !mealDataObj.recipes.some((fav) => fav.id == query.id)) {
+      mealDataObj.recipes.push(recipe);
       fs.writeFileSync(
-        `${__dirname}/dev-data/data.json`,
-        JSON.stringify(dataObj)
+        `${__dirname}/dev-data/meal-data.json`,
+        JSON.stringify(mealDataObj)
       );
     }
-    res.writeHead(302, { Location: '/meal' });
+    res.writeHead(302, { Location: '/' });
     res.end();
 
-    // View meal page
-  } else if (pathname === '/meal') {
-    res.writeHead(200, { 'Content-type': 'text/html' });
-
-    const mealHtml = dataObj.meal
-      .map((el) => replaceTemplate(tempCard, el))
-      .join('');
-    const output = tempHome.replace('{%RECIPE_CARDS%}', mealHtml);
-
-    res.end(output);
+    // Reset meal
+  } else if (pathname === '/reset-meal') {
+    mealDataObj.recipes = [];
+    mealDataObj.protein = 0;
+    mealDataObj.calories = 0;
+    fs.writeFileSync(
+      `${__dirname}/dev-data/meal-data.json`,
+      JSON.stringify(mealDataObj)
+    );
+    res.writeHead(302, { Location: '/' });
+    res.end();
 
     // Serve images
   } else if (pathname.startsWith('/images/')) {
