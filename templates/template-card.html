@@ -1,10 +1,11 @@
 <figure>
-  <a class="card" href="/recipe?id={%ID%}">
-    <img src="{%IMAGE%}" height="75" />
-    <h2 class="recipeTitle">{%RECIPENAME%}</h2>
-    <h6 class="highProtein {%NOT_HIGHPROTEIN%}">High protein</h6>
-  </a>
-  <a href="/add-to-meal?id={%ID%}" class="recipeLink">
-    <span>Add to favorites</span>
-  </a>
+  <div class="card">
+    <a class="recipeTitleSection" href="/recipe?id={%ID%}">
+      <img src="{%IMAGE%}" height="75" />
+      <h2 class="recipeTitle">{%RECIPENAME%}</h2>
+    </a>
+    <a href="/add-to-meal?id={%ID%}" class="cardButton">
+      <h6 class="highProtein">Add to meal</h6>
+    </a>
+  </div>
 </figure>

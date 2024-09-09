@@ -20,32 +20,6 @@
   },
   {
     "id": 1,
-    "recipeName": "Low-carb Rice with Honey",
-    "highProtein": false,
-    "protein": "N/A",
-    "ingredients": ["butter", "salt"],
-    "description": "Hello World",
-    "calories": 300,
-    "image": "../images/rice.jpg",
-    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
-    "servingSize": 3,
-    "servingType": "cups"
-  },
-  {
-    "id": 2,
-    "recipeName": "Butternut Squash",
-    "highProtein": false,
-    "protein": "N/A",
-    "ingredients": ["butter", "salt"],
-    "description": "Hello World",
-    "calories": 300,
-    "image": "../images/butternut-squash.jpg",
-    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
-    "servingSize": 3,
-    "servingType": "cups"
-  },
-  {
-    "id": 3,
     "recipeName": "Dal Makhani",
     "highProtein": true,
     "protein": 25,
@@ -58,20 +32,7 @@
     "servingType": "cups"
   },
   {
-    "id": 4,
-    "recipeName": "Sweet Potato Puree",
-    "highProtein": false,
-    "protein": "N/A",
-    "ingredients": ["butter", "salt"],
-    "description": "Hello World",
-    "calories": 300,
-    "image": "../images/sweet-potato-puree.jpg",
-    "directions": "Step 1: chop,\n Step 2: bake,\n Step 3: plate",
-    "servingSize": 3,
-    "servingType": "cups"
-  },
-  {
-    "id": 6,
+    "id": 2,
     "recipeName": "Liver and Onions",
     "highProtein": true,
     "protein": 25,
@@ -84,7 +45,7 @@
     "servingType": "grams of liver"
   },
   {
-    "id": 7,
+    "id": 3,
     "recipeName": "Curried Cauliflower Steak",
     "highProtein": false,
     "protein": "N/A",

@@ -52,22 +52,32 @@
       }
 
       .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
         border: 1px solid #1a1a1a;
         margin-bottom: 5rem;
         display: flex;
         text-decoration: none;
       }
 
-      .recipeTitle {
-        margin-right: auto;
+      .recipeTitleSection {
         display: flex;
         align-items: center;
-        padding: 0 3rem;
+        flex-grow: 1;
 
+        margin-right: auto;
+        text-decoration: none;
+        border-right: 1px solid #1a1a1a;
+      }
+
+      .recipeTitle {
         font-family: 'Montserrat', sans-serif;
         color: #1a1a1a;
         font-size: 3.25rem;
-        text-decoration: none;
+
+        padding: 0 3rem;
       }
 
       .highProtein {
@@ -82,8 +92,13 @@
         color: #186318;
       }
 
-      .notHighProtein {
+      .displayNone {
         display: none;
+      }
+
+      .cardButton {
+        text-decoration: none;
+        height: 100%;
       }
 
       .searchBar {
@@ -107,17 +122,11 @@
         <span>Reset meal</span>
       </a>
 
-      <div class="searchBarContainer">
-        <input
-          type="text"
-          id="searchBar"
-          placeholder="Search recipes..."
-          oninput="searchRecipes()"
-          class="searchBar"
-        />
-      </div>
+      <span class="{%HIDE_SEARCHBAR%}">{%SEARCHBAR%}</span>
 
       <div class="cards-container" id="cardsContainer">{%RECIPE_CARDS%}</div>
+
+      <span class="{%HIDE_RESETMEAL%}">{%RESETMEAL%}</span>
     </div>
   </body>
 </html>

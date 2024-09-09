@@ -128,7 +128,7 @@
       }
 
       .recipeDirections {
-        padding: 5rem 6rem;
+        padding: 2rem 6rem 5rem 6rem;
         font-size: 1.6rem;
         white-space: pre-line;
       }
@@ -159,6 +159,10 @@
         font-size: 1.9rem;
         width: 3rem;
         text-align: center;
+      }
+
+      .ingredient {
+        display: flex;
       }
 
       /* Chrome, Safari, Edge, Opera */
@@ -212,7 +216,12 @@
           <span>Add to meal</span>
         </a>
 
-        <p class="recipeDirections">{%DIRECTIONS%}</p>
+        <div class="recipeDirections">
+          <ul class="recipeIngredients">
+            {%INGREDIENTS%}
+          </ul>
+          <p>{%DIRECTIONS%}</p>
+        </div>
       </figure>
     </div>
   </body>

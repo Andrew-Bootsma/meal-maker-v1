@@ -3,8 +3,9 @@ const http = require('http');
 const url = require('url');
 const path = require('path');
 const replaceTemplate = require('./modules/replaceTemplate');
+const replaceIngredientTemplate = require('./modules/replaceIngredientTemplate');
 
-const tempHome = fs.readFileSync(
+let tempHome = fs.readFileSync(
   `${__dirname}/templates/template-home.html`,
   'utf-8'
 );
@@ -18,6 +19,14 @@ const tempRecipe = fs.readFileSync(
 );
 const tempMeal = fs.readFileSync(
   `${__dirname}/templates/template-meal.html`,
+  'utf-8'
+);
+const tempIngredient = fs.readFileSync(
+  `${__dirname}/templates/template-ingredient.html`,
+  'utf-8'
+);
+const tempSearchbar = fs.readFileSync(
+  `${__dirname}/templates/template-searchbar.html`,
   'utf-8'
 );
 
@@ -56,6 +65,9 @@ const server = http.createServer((req, res) => {
 
     const getOutput = () => {
       if (mealDataObj.recipes.length === 0) {
+        tempHome = tempHome.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
+        tempHome = tempHome.replace('{%SEARCHBAR%}', tempSearchbar);
+        tempHome = tempHome.replace('{HIDE_RESETMEAL}', 'hidden');
         return tempHome.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
       }
 
@@ -68,23 +80,20 @@ const server = http.createServer((req, res) => {
 
     res.end(getOutput());
 
-    // Recipes page
-  } else if (pathname === '/recipes') {
-    res.writeHead(200, { 'Content-type': 'text/html' });
-
-    const cardsHtml = dataObj.recipes
-      .map((el) => replaceTemplate(tempCard, el))
-      .join('');
-    const output = tempHome.replace('{%RECIPE_CARDS%}', cardsHtml);
-
-    res.end(output);
-
     // Recipe page
   } else if (pathname === '/recipe') {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
     const recipe = recipeDataObj[query.id];
     const userServings = query.userServings || recipe.servingSize;
+
+    console.log(typeof recipeDataObj);
+    console.log(typeof recipe);
+    console.log(typeof recipe.ingredients);
+
+    const ingredients = Object.entries(recipe.ingredients).map(([key, value]) =>
+      replaceIngredientTemplate(tempIngredient, value, key)
+    );
 
     const adjustedRecipe = {
       ...recipe,
@@ -94,7 +103,8 @@ const server = http.createServer((req, res) => {
       protein: recipe.protein !== 'N/A' ? recipe.protein * userServings : 'N/A',
     };
 
-    const output = replaceTemplate(tempRecipe, adjustedRecipe);
+    let output = replaceTemplate(tempRecipe, adjustedRecipe);
+    output = output.replace('{%INGREDIENTS%}', ingredients.join(''));
     res.end(output);
 
     // Add a recipe to meal
