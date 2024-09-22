@@ -17,16 +17,12 @@ const tempRecipe = fs.readFileSync(
   `${__dirname}/templates/template-recipe.html`,
   'utf-8'
 );
-const tempMeal = fs.readFileSync(
-  `${__dirname}/templates/template-meal.html`,
-  'utf-8'
-);
 const tempIngredient = fs.readFileSync(
   `${__dirname}/templates/template-ingredient.html`,
   'utf-8'
 );
-const tempSearchbar = fs.readFileSync(
-  `${__dirname}/templates/template-searchbar.html`,
+const tempResetMeal = fs.readFileSync(
+  `${__dirname}/templates/template-reset-meal.html`,
   'utf-8'
 );
 
@@ -65,17 +61,26 @@ const server = http.createServer((req, res) => {
 
     const getOutput = () => {
       if (mealDataObj.recipes.length === 0) {
-        tempHome = tempHome.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
-        tempHome = tempHome.replace('{%SEARCHBAR%}', tempSearchbar);
-        tempHome = tempHome.replace('{HIDE_RESETMEAL}', 'hidden');
-        return tempHome.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
+        let proteinPage = tempHome;
+        proteinPage = proteinPage.replace(
+          '{%RECIPE_CARDS%}',
+          highProteinCardsHtml
+        );
+        proteinPage = proteinPage.replace('{%HIDE_RESETMEAL%}', 'hidden');
+        return proteinPage.replace('{%RECIPE_CARDS%}', highProteinCardsHtml);
       }
 
       if (mealDataObj.recipes.length === 1) {
-        return tempHome.replace('{%RECIPE_CARDS%}', lowProteinCardsHtml);
+        let sideDishPage = tempHome;
+        sideDishPage = sideDishPage.replace('{%HIDE_RESETMEAL%}', 'hidden');
+        return sideDishPage.replace('{%RECIPE_CARDS%}', lowProteinCardsHtml);
       }
 
-      return tempMeal.replace('{%RECIPE_CARDS%}', mealHtml);
+      let mealPage = tempHome;
+      mealPage = mealPage.replace('{%RECIPE_CARDS%}', mealHtml);
+      mealPage = mealPage.replace('{%RESET_MEAL%}', tempResetMeal);
+      mealPage = mealPage.replaceAll('{%HIDE_BORDER%}', 'hideBorder');
+      return mealPage.replaceAll('{%DISPLAY_NONE%}', 'hidden');
     };
 
     res.end(getOutput());
@@ -86,10 +91,6 @@ const server = http.createServer((req, res) => {
 
     const recipe = recipeDataObj[query.id];
     const userServings = query.userServings || recipe.servingSize;
-
-    console.log(typeof recipeDataObj);
-    console.log(typeof recipe);
-    console.log(typeof recipe.ingredients);
 
     const ingredients = Object.entries(recipe.ingredients).map(([key, value]) =>
       replaceIngredientTemplate(tempIngredient, value, key)
@@ -105,6 +106,16 @@ const server = http.createServer((req, res) => {
 
     let output = replaceTemplate(tempRecipe, adjustedRecipe);
     output = output.replace('{%INGREDIENTS%}', ingredients.join(''));
+
+    console.log(mealDataObj.recipes.length > 1);
+
+    if (mealDataObj.recipes.length > 1) {
+      output = output.replace('{%HIDE_ADD_TO_MEAL%}', 'hidden');
+      output = output.replace('{%RESET_MEAL%}', tempResetMeal);
+    } else {
+      output = output.replace('{%RESET_MEAL%}', '');
+    }
+
     res.end(output);
 
     // Add a recipe to meal

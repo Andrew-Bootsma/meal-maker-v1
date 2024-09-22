@@ -133,9 +133,8 @@
         white-space: pre-line;
       }
 
-      .recipeLink:link,
-      .recipeLink:visited {
-        display: block;
+      .button:link,
+      .button:visited {
         color: #186318;
         font-size: 1.6rem;
         font-weight: 700;
@@ -151,8 +150,12 @@
         background-color: #fafafa;
       }
 
-      .notHighProtein {
-        display: none;
+      .hidden {
+        display: none !important;
+      }
+
+      .revealed {
+        display: block;
       }
 
       .servingInput {
@@ -212,9 +215,11 @@
           <p class="{%NOT_HIGHPROTEIN%}">Protein: {%PROTEIN%}g</p>
         </div>
 
-        <a href="/add-to-meal?id={%ID%}" class="recipeLink">
+        <a href="/add-to-meal?id={%ID%}" class="button {%HIDE_ADD_TO_MEAL%}">
           <span>Add to meal</span>
         </a>
+
+        {%RESET_MEAL%}
 
         <div class="recipeDirections">
           <ul class="recipeIngredients">

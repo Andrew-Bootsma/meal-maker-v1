@@ -1,11 +1,11 @@
 <figure>
   <div class="card">
-    <a class="recipeTitleSection" href="/recipe?id={%ID%}">
+    <a class="recipeTitleSection {%HIDE_BORDER%}" href="/recipe?id={%ID%}">
       <img src="{%IMAGE%}" height="75" />
       <h2 class="recipeTitle">{%RECIPENAME%}</h2>
     </a>
-    <a href="/add-to-meal?id={%ID%}" class="cardButton">
-      <h6 class="highProtein">Add to meal</h6>
+    <a href="/add-to-meal?id={%ID%}" class="cardButton {%DISPLAY_NONE%}">
+      <h6 class="addToMeal">Add to meal</h6>
     </a>
   </div>
 </figure>

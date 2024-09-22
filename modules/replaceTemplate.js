@@ -15,6 +15,6 @@ module.exports = (temp, recipe, ingredientKey) => {
   );
 
   if (!recipe.highProtein)
-    output = output.replace(/{%NOT_HIGHPROTEIN%}/g, 'notHighProtein');
+    output = output.replace(/{%NOT_HIGHPROTEIN%}/g, 'hidden');
   return output;
 };

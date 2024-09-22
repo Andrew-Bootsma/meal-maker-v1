@@ -72,6 +72,10 @@
         border-right: 1px solid #1a1a1a;
       }
 
+      .hideBorder {
+        border-right: none;
+      }
+
       .recipeTitle {
         font-family: 'Montserrat', sans-serif;
         color: #1a1a1a;
@@ -80,7 +84,7 @@
         padding: 0 3rem;
       }
 
-      .highProtein {
+      .addToMeal {
         display: flex;
         align-items: center;
 
@@ -92,7 +96,7 @@
         color: #186318;
       }
 
-      .displayNone {
+      .hidden {
         display: none;
       }
 
@@ -101,15 +105,21 @@
         height: 100%;
       }
 
-      .searchBar {
-        font-size: 2rem;
-        padding: 0.5rem;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .searchBarContainer {
-        margin-top: 2rem;
+      .button:link,
+      .button:visited {
+        display: block;
+        color: #186318;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1px solid #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        background-color: #fafafa;
       }
     </style>
   </head>
@@ -118,15 +128,9 @@
     <div class="container">
       <h1>Meal Maker</h1>
 
-      <a href="/reset-meal" class="recipeLink">
-        <span>Reset meal</span>
-      </a>
-
-      <span class="{%HIDE_SEARCHBAR%}">{%SEARCHBAR%}</span>
-
       <div class="cards-container" id="cardsContainer">{%RECIPE_CARDS%}</div>
 
-      <span class="{%HIDE_RESETMEAL%}">{%RESETMEAL%}</span>
+      <span class="{%HIDE_RESETMEAL%}">{%RESET_MEAL%}</span>
     </div>
   </body>
 </html>
